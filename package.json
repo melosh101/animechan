@@ -3,23 +3,21 @@
 	"description": "A REST API for anime quotes",
 	"private": true,
 	"scripts": {
-		"frontend:install": "cd client && pnpm install",
-		"backend:install": "cd server && pnpm install",
-		"install:all": "pnpm install && pnpm frontend:install && pnpm backend:install",
-		"frontend:start": "cd client && pnpm build && pnpm start",
-		"backend:start": "cd server && pnpm start",
-		"frontend:dev": "cd client && pnpm dev",
-		"backend:dev": "cd server && pnpm dev",
-		"backend:seed": "cd server && pnpm seed",
-		"start:prod": "concurrently \"pnpm backend:start\" \"pnpm frontend:start\"",
-		"start:dev": "concurrently \"cd server && pnpm dev\" \"cd client && pnpm dev\"",
-		"format-all": "prettier --write ."
+		"frontend:install": "pnpm install --filter ./client",
+		"backend:install": "pnpm install --filter ./server",
+		"install:all": "pnpm install",
+		"frontend:start": "pnpm --filter ./client start",
+		"backend:start": "pnpm --filter ./server start",
+		"frontend:dev": "pnpm --filter ./client dev",
+		"backend:dev": "pnpm --filter ./server dev",
+		"backend:seed": "pnpm --filter ./server seed",
+		"start:prod": "pnpm --stream -r start",
+		"start:dev": "pnpm --stream -r dev",
+		"format-all": "prettier --write .",
+		"start": "pnpm --stream -r start"
 	},
 	"author": "Rocktim Saikia <rocktimthedev@gmail.com> (https://rocktimsaikia.dev/)",
 	"license": "MPL-2.",
-	"dependencies": {
-		"concurrently": "^8.2.0"
-	},
 	"engines": {
 		"node": ">=20.0.0"
 	},
